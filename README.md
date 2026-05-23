@@ -2,6 +2,22 @@
 
 This codebase implements a ROS 2 reactive obstacle avoidance pipeline for a mobile robot. The main controller uses a Follow-the-Gap (FTG) style model over a fused 360-degree obstacle profile, then sends commands through a safety gate before publishing `/cmd_vel`.
 
+## How to Run
+
+SSH into the Husarion robot, then build and launch the obstacle avoidance system with:
+
+```bash
+cd ~/ros2_ws && \
+colcon build --packages-select rosbot_obstacle_avoidance && \
+source ~/ros2_ws/install/setup.bash && \
+ros2 launch rosbot_obstacle_avoidance ablation_full.launch.py
+```
+
+This launch configuration activates the full sensor stack, including:
+* LiDAR
+* Depth Camera
+* ToF sensors
+
 ## Sensor It Use
 
 The system uses four sensor/data sources:
